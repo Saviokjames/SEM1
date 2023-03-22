@@ -1,0 +1,36 @@
+<html>
+<head></head>
+<body>
+  <form action=""method="POST">
+  <table border=2>
+    <h1>enter details</h1>
+    <tr><td><h3>enter name :</td><td><input type="text" name="name"></td></h3></tr>
+    <tr><td><h3>physics mark:</td><td><input type="number" name="physics"></td></h3></tr>
+    <tr><td><h3>chemistry mark :</td><td><input type="number" name="chemistry"></td></h3></tr>
+    <tr><td><h3>maths mark :</td><td><input type="number" name="maths"></h3></tr>
+      </table>
+    <tr><input type="submit"></tr>
+  
+</body>
+
+<?php
+ if($_POST)
+ {
+ $nam=$_POST['name'];
+ $phy=$_POST['physics'];
+ $chem=$_POST['chemistry'];
+ $mat=$_POST['maths'];
+ $sum=0;
+ $sum=$phy+$chem+$mat;
+ $avg=$sum/2;
+ 
+ echo"STUDENT :".$nam.'<br>';
+ echo"physics mark :".$phy."<br>";
+ echo"chemistry mark :".$chem."<br>";
+ echo"maths mark :".$mat."<br>";
+ echo"Sum :".$sum."<br>";
+ echo"average :".$avg."<br>";
+ }
+ ?>
+ </form>
+ </html>
