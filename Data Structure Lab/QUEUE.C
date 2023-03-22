@@ -1,0 +1,104 @@
+#include<stdio.h>
+int Q[100],choice,i,front,rear,size,item;
+void insertion();
+void deletion();
+void disp();
+void main()
+{
+clrscr();
+front=-1;
+rear=-1;
+printf("enter queue size");
+scanf("%d",&size);
+ do
+{
+printf("\n----------\nOPERATIONS\n----------\n1.insertion   *\n2.deletion    *\n3.display     *\n4.exit        *");
+
+printf("\nENTER CHOICE");
+scanf("%d",&choice);
+ switch(choice)
+{
+ case 1:
+ {
+ printf("\n Enter item to insert")  ;
+ scanf("%d",&item);
+ insertion();
+ break;
+ }
+ case 2:
+ {
+ deletion();
+ break;
+ }
+ case 3:
+ {
+ disp();
+ break;
+ }
+ case 4:
+ {
+ printf("\n exit pls");
+ break;
+ }
+ default:
+ {
+ printf("INVALID CHOICE") ;
+ }
+}
+}
+while(choice!=4);
+getch();
+}               //------------------MAIN FUNC END
+		//FUNC STARTING
+void insertion()
+{
+if(rear==size-1)
+printf("\n THE QUEUE IS FULL");
+else if(rear==-1)
+{
+front=0;
+rear=0;
+Q[rear]=item;
+}
+else
+{
+rear++;
+Q[rear]=item;
+}
+}
+  //DELETION
+
+void deletion()
+{
+if(front==-1)
+printf("Q IS EMPTY") ;
+else if (front==rear)
+{
+printf("DELETED item is :%d ",Q[front]);
+front=-1;
+rear=-1;
+}
+else
+{
+printf("DELETED item = %d",Q[front]);
+front++;
+}
+}
+	//DISPLAY
+void disp()
+{
+if(front==-1)
+ printf("Q IS EMPTY");
+else
+{
+for(i=front;i<=rear;i++)
+ printf("%d\t",Q[i]);
+}
+}
+
+
+
+
+
+
+

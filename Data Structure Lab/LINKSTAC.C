@@ -1,0 +1,132 @@
+#include<stdio.h>
+#include<conio.h>
+void push();
+void pop();
+void search();
+void disp();
+
+
+
+struct node
+{
+int data;
+struct node *next;
+};
+struct node *start ;
+
+void main()
+{
+int choice;
+clrscr();
+printf("----------\nOPERATIONS\n----------\n1.push\n2.pop\n3.search\n4.display\n5.exit");
+do
+{
+printf("\n enter choice");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1:
+{
+push();
+break;
+}
+case 2:
+ {
+ pop();
+ break;
+ }
+ case 3:
+ {
+ search();
+ break;
+ }
+ case 4:
+ {
+ disp();
+ break;
+ }
+ case 5:
+ {
+ printf("exit pls");
+ break;
+ }
+ default:{
+ printf("invalid choice");
+ }
+}
+}
+while(choice!=5);
+getch();
+}
+
+void push()
+{
+	int x;
+	struct node *ptr=(struct node*)malloc(sizeof(struct node*));
+	if(ptr==NULL)
+	{
+	printf("\n cant push element");
+	}
+	else
+	{
+	printf("\n enter the value");
+	scanf("%d",&x);
+	if(start==NULL)
+	{
+	ptr->data=x;
+	ptr->next=NULL;
+	start=ptr;
+	}
+	else
+	{
+	ptr->data=x;
+	ptr->next=start;
+	start=ptr;
+	}
+	}
+ }
+void pop()
+{
+	int x;
+	struct node *ptr;
+	if(start==NULL)
+	{
+	printf("\n underflow");
+	}
+	else
+	{
+	x=start->data;
+	ptr=start;
+	start=start->next;
+	free(ptr);
+	printf("\n element poped -%d",x);
+	}
+}
+void search()
+{
+	int i=1,f=0,x;
+	struct node*ptr;
+	ptr=start;
+	if(ptr==NULL)
+	{
+	printf("\n stack is empty");
+	}
+	else
+	{
+	printf("\n enter element to search ");
+	scanf("%d",&x);
+	while(ptr!=NULL)
+	{
+	if(ptr->data==x)
+	{
+	f=1;break;
+	}
+	i++;
+	ptr=ptr->next;
+	}
+	if(f==0)
+	printf("\n item not found");
+	else
+	printf("\n item found at position %d",i);
+	}
+}
